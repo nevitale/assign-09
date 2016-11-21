@@ -8,7 +8,7 @@ library(ShortRead)
 ##
 
 #download data
-##csv name updated
+##csv name update
 elves <- read.csv("houseelf-earlength-dna-data_1.csv", stringsAsFactors = FALSE)
 View(elves)
 
