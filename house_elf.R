@@ -24,7 +24,7 @@ earlength <- function(ear){
     return("small")
   }
 }
-
+##
 
 GC_counter <- function(sequences){
   #counts number of Gs and Cs in DNA string
