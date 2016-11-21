@@ -81,3 +81,18 @@ is.numeric(elf_table)
 avg_GC_by_earsize <- summarise(group_by(elf_table, ear), mean_GC = mean(GC_content, na.rm = TRUE))
 avg_GC_by_earsize_df <- data.frame(avg_GC_by_earsize, stringsAsFactors = FALSE)
 avg_GC_by_earsize_df
+
+
+###this will be from ethan
+
+get_size_class <- function(ear_length){
+  # Calculate the size class for one or more earth lengths
+  ear_lengths <- ifelse(ear_length > 10, "large", "small")
+  return(ear_lengths)
+}
+
+
+size_class <- get_size_class(elves$earlength)
+
+
+final_elves_df <- data.frame(size_class, elves$id, )
