@@ -44,11 +44,15 @@ GC_counter <- function(sequences){
   return(gc_content)
 }
 
+
+##from ethan
 get_ear_length <- function(seq){
     #Determine the ear length category
     ear_lengths <- ifelse(seq > 10, "large", "small")
     return(ear_lengths)
 }
+
+
 
 ##create data frame
 
@@ -58,7 +62,7 @@ elf_table <- data.frame(id=elves$id,ear=character(nrow(elves)), GC_content=numer
 
 for(i in 1:(nrow(elves))){
   
-  elf_table[i,]$ear <- earlength(elves$earlength[i])
+  elf_table[i,]$ear <- get_ear_length(elves$earlength[i])
   elf_table[i,]$GC_content <- GC_counter(elves$dnaseq[i])
   elf_table[i,]$id <- elves$id[i]
   
@@ -88,17 +92,3 @@ avg_GC_by_earsize <- summarise(group_by(elf_table, ear), mean_GC = mean(GC_conte
 avg_GC_by_earsize_df <- data.frame(avg_GC_by_earsize, stringsAsFactors = FALSE)
 avg_GC_by_earsize_df
 
-
-###this will be from ethan
-
-get_size_class <- function(ear_length){
-  # Calculate the size class for one or more earth lengths
-  ear_lengths <- ifelse(ear_length > 10, "large", "small")
-  return(ear_lengths)
-}
-
-
-size_class <- get_size_class(elves$earlength)
-
-
-final_elves_df <- data.frame(size_class, elves$id, )
