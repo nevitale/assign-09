@@ -44,6 +44,12 @@ GC_counter <- function(sequences){
   return(gc_content)
 }
 
+get_ear_length <- function(seq){
+    #Determine the ear length category
+    ear_lengths <- ifelse(seq > 10, "large", "small")
+    return(ear_lengths)
+}
+
 ##create data frame
 
 elf_table <- data.frame(id=elves$id,ear=character(nrow(elves)), GC_content=numeric(nrow(elves)), stringsAsFactors = FALSE)
